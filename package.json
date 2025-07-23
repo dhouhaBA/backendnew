@@ -1,0 +1,47 @@
+{
+  "name": "my-project",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "dependencies": {
+    "@strapi/plugin-cloud": "4.17.1",
+    "@strapi/plugin-i18n": "^4.15.0",
+    "@strapi/plugin-users-permissions": "^4.15.0",
+    "@strapi/provider-email-nodemailer": "^4.17.1",
+    "@strapi/strapi": "4.17.1",
+    "better-sqlite3": "8.6.0",
+    "jsonwebtoken-refresh": "^5.7.0",
+    "marked": "^11.1.1",
+    "mime": "^4.0.1",
+    "mysql2": "^3.9.1",
+    "nodemailer": "^6.9.8",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "5.3.4",
+    "socket.io": "^4.7.4",
+    "strapi-chatgpt": "^1.0.1",
+    "strapi-plugin-email": "^3.6.11",
+    "strapi-plugin-populate-deep": "^3.0.1",
+    "strapi-provider-email-gmail-2lo": "^3.5.1",
+    "strapi-provider-email-mailtrap": "^3.5.0",
+    "styled-components": "5.3.3",
+    "web-push": "^3.6.7"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "f51cf634-d7f8-4abc-ab36-79559f8dcf5b"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=20.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}
