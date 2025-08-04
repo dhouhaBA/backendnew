@@ -1,5 +1,5 @@
 {
-  "name": "my-project",
+  "name": "selectilla-backend",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
@@ -7,20 +7,22 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "test": "jest"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "4.17.1",
+    "@strapi/plugin-cloud": "^4.25.23",
     "@strapi/plugin-i18n": "^4.15.0",
-    "@strapi/plugin-users-permissions": "^4.15.0",
-    "@strapi/provider-email-nodemailer": "^4.17.1",
-    "@strapi/strapi": "4.17.1",
+    "@strapi/plugin-users-permissions": "^4.12.0",
+    "@strapi/provider-email-nodemailer": "^5.20.0",
+    "@strapi/strapi": "^4.25.23",
     "better-sqlite3": "8.6.0",
     "jsonwebtoken-refresh": "^5.7.0",
     "marked": "^11.1.1",
     "mime": "^4.0.1",
     "mysql2": "^3.9.1",
     "nodemailer": "^6.9.8",
+    "pg": "^8.16.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "5.3.4",
@@ -39,9 +41,17 @@
   "strapi": {
     "uuid": "f51cf634-d7f8-4abc-ab36-79559f8dcf5b"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "engines": {
     "node": ">=18.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^30.0.5",
+    "sonar-scanner": "^3.1.0",
+    "supertest": "^7.1.4"
+  }
 }

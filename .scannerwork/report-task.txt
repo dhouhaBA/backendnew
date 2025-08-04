@@ -1,0 +1,6 @@
+projectKey=SelectIlLa_Backend
+serverUrl=http://localhost:9100
+serverVersion=9.9.8.100196
+dashboardUrl=http://localhost:9100/dashboard?id=SelectIlLa_Backend
+ceTaskId=AZh1V_NB7czQ_vH8MqK3
+ceTaskUrl=http://localhost:9100/api/ce/task?id=AZh1V_NB7czQ_vH8MqK3
