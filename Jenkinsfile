@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     environment {
-        SONAR_PROJECT_KEY = 'SelectIlLa_Backend' // Clé du projet SonarQube
-        SONAR_SCANNER_HOME = 'sonarscanner' // Chemin vers le scanner SonarQube
-        SONAR_TOKEN = credentials('sonar-token')  // 🔐 Token SonarQube (ID des credentials Jenkins)
+        SONAR_PROJECT_KEY = 'SelectIlLa_Backend'
+        SONAR_SCANNER_HOME = 'sonarscanner'
+        SONAR_TOKEN = credentials('sonar-token') // Doit correspondre à l'ID dans Jenkins
     }
 
     stages {
@@ -22,7 +22,8 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv(credentialsId: 'sonar-token') {  // Utilise le même ID que SONAR_TOKEN
+                // Correction clé : ajout de 'installationName' (configuré dans Jenkins)
+                withSonarQubeEnv(installationName: 'SonarQube', credentialsId: 'sonar-token') {
                     sh """
                         sonar-scanner \
                             -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
