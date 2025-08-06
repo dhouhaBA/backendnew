@@ -1,6 +1,8 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs 'node18' }
     environment {
         SONAR_PROJECT_KEY = 'SelectIlLa_Backend'
         SONAR_SCANNER_HOME = 'sonarscanner'
