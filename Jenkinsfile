@@ -2,16 +2,12 @@ pipeline {
   agent any
 
   environment {
-    SONAR_TOKEN = credentials('sonar-token-id')  // 🔐 ID du token stocké dans Jenkins
+    SONAR_PROJECT_KEY = 'SelectIlLa_Backend' // Clé du projet SonarQube
+    SONAR_SCANNER_HOME = 'sonarscanner' // Chemin vers le répertoire du scanner SonarQube
+    SONAR_TOKEN = credentials('sonar-token-id')  // 🔐 ID stocké dans Jenkins
   }
 
   stages {
-    stage('Clone Repo') {
-      steps {
-        git 'https://github.com/dhouhaBA/backendnew.git'
-      }
-    }
-
     stage('Install dependencies') {
       steps {
         sh 'npm install'
@@ -25,16 +21,18 @@ pipeline {
     }
 
     stage('SonarQube Analysis') {
-      steps {
-        withSonarQubeEnv('MySonarQube') {
-          sh '''
+      steps { withSonarQubeEnv(credentialsId: 'sonar-token') {
+
+sh   """
+
+       
             sonar-scanner \
               -Dsonar.projectKey=SelectIlLa_Backend \
               -Dsonar.sources=. \
               -Dsonar.host.url=http://localhost:9100 \
               -Dsonar.login=$SONAR_TOKEN
-          '''
-        }
+          """
+        }}
       }
     }
 
@@ -47,8 +45,6 @@ pipeline {
     stage('Deploy') {
       steps {
         sh 'docker-compose up -d'
-        sh 'sonar-scanner'
-
       }
     }
   }
