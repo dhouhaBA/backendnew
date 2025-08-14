@@ -5,12 +5,20 @@ pipeline {
         nodejs 'node18'
     }
     environment {
-        SONAR_PROJECT_KEY = 'SelectIlLa_Backend'
+        SONAR_PROJECT_KEY = 'My-Backend-Job'
         SONAR_SCANNER_HOME = 'sonarscanner'
         SONAR_TOKEN = credentials('sonar-token') // Doit correspondre à l'ID dans Jenkins
     }
 
     stages {
+
+
+      stage('Checkout') {
+      steps {
+        echo 'Checking out source code...'
+        checkout scm
+      }
+    }
         stage('Install dependencies') {
             steps {
                 sh 'npm install'
@@ -23,16 +31,16 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
+       stage('SonarQube Analysis') {
             steps {
                 // Correction clé : ajout de 'installationName' (configuré dans Jenkins)
-                withSonarQubeEnv(installationName: 'SonarQube', credentialsId: 'sonar-token') {
+                withSonarQubeEnv(installationName: 'sonarqube', credentialsId: 'sonar-token') {
                     sh """
+                    
+                     npm install -g sonar-scanner
                         sonar-scanner \
                             -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
-                            -Dsonar.sources=. \
-                            -Dsonar.host.url=http://localhost:9100 \
-                            -Dsonar.login=${SONAR_TOKEN}
+                            
                     """
                 }
             }
