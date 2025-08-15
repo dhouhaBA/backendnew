@@ -6,7 +6,7 @@ services:
     ports:
       - '1338:1337'
     volumes:
-      - .:/app
+      - strapi_data:/app
     environment:
       DATABASE_CLIENT: postgres
       DATABASE_NAME: strapi
